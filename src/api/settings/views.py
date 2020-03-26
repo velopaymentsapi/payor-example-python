@@ -23,14 +23,6 @@ def velo_payor_info():
         print("Exception when calling PayorsApi->get_payor_by_id_v2: %s\n" % e)
 
     res = {}
-    # {'address': {'city': 'Toledp',
-    #             'country': 'US',
-    #             'county_or_province': 'Ohio',
-    #             'line1': '1234 Somestreet',
-    #             'line2': None,
-    #             'line3': None,
-    #             'line4': None,
-    #             'zip_or_postcode': '43615'},
     a = {}
     a['city'] = api_response.address.city
     a['country'] = api_response.address.country
@@ -95,7 +87,6 @@ def velo_countries():
 
     try:
         api_response = api_instance.list_supported_countries()
-        print(api_response)
     except ApiException as e:
         print("Exception when calling CountriesApi->list_supported_countries: %s\n" % e)
     
