@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+  api:
+    container_name: payor-example-python
+    build: .
+    ports:
+      - "4567:5000"
+    volumes:
+      - ./src:/usr/src/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - payornetwork
+    command: python -m flask run --host 0.0.0.0 --port 5000
+
+  db:
+    image: postgres:9.6
+    container_name: db
+    environment:
+      - POSTGRES_USER=payor
+      - POSTGRES_PASSWORD=payor
+    networks:
+      - payornetwork
+    ports:
+      - "5432:5432"
+    volumes:
+        - ./pgsql:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    container_name: redis
+    networks:
+      - payornetwork
+
+networks:
+  payornetwork:
+    name: external_payornetwork
