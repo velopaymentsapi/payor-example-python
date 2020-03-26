@@ -18,7 +18,7 @@ build:
 	docker-compose build --no-cache api
 
 up: clean network
-	docker-compose run --service-ports api
+	docker-compose run -d --service-ports api
 
 sh: clean network
 	docker-compose run --service-ports api sh
