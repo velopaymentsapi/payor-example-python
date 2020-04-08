@@ -9,4 +9,4 @@ Flask==1.1.1
 apscheduler==3.6.3
 python-dotenv==0.12.0
 flask-jwt-extended==3.24.1
-git+https://github.com/velopaymentsapi/velo-python.git@2.20.29-beta.1
+git+https://github.com/velopaymentsapi/velo-python.git@2.20.118
